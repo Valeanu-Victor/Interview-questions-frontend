@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <p class="text-responsive categories-p">Select difficulties</p>
+  </div>
+  <div #difficulties class="container text-center">
+    <div *ngFor="let difficulty of difficultyText" class="div-inline-btn">
+      <button type="button" class="btn btn-size btn-dark" (click)="toggleClass($event)">{{ difficulty }}</button>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <p class="text-responsive categories-p">Select Question Categories</p>
+  </div>
+  <div #categories class="container text-center">
+    <div *ngFor="let category of categoriesText" class="div-inline-btn">
+      <button type="button" class="btn btn-size btn-dark" (click)="toggleClass($event)">{{ category }}</button>
+    </div>
+  </div>
+</div>
+
+<div class="container div-bottom">
+  <button class="btn btn-primary btn-start" (click)="onStart()">START</button>
+</div>
+
+<div>
+  <p *ngIf="!areButtonsSelected" id="error-msg" class="d-flex justify-content-center">Please select at least one difficulty and at least one category</p>
+</div>

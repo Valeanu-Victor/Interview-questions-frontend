@@ -1,0 +1,21 @@
+<app-navbar></app-navbar>
+
+<div id="div-categories-btn" style="border: solid 1px; color: red;">
+  <button id="btn-back" class="btn btn-secondary" routerLink="/categories"><i class="fa fa-arrow-left"></i> Back to categories</button>
+</div>
+
+<div id="div-questions" class="container">
+
+</div>
+
+<div id="div-answears" class="container" style="border: solid 1px; color: red;">
+
+</div>
+
+<div id="div-nav-btns" style="border: solid 1px; color: blue;">
+  <div class="btn-group btn-center" role="group">
+    <button id="btn-previous" class="btn btn-nav"><i class="fa fa-arrow-left"></i> Previous Question</button>
+    <button class="btn btn-success btn-nav" (click)="toggleEyeIcon($event)"><i class="fa fa-eye"></i></button>
+    <button id="btn-next" class="btn btn-nav">Next Question <i class="fa fa-arrow-right"></i></button>
+  </div>
+</div>

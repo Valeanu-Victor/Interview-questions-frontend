@@ -1,0 +1,45 @@
+@media only screen and (max-width: 700px) {
+  .btn-nav {
+    max-width: 10%;
+  }
+}
+
+.btn-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.btn-nav {
+  max-width: none;
+  height: 70%;
+}
+
+#btn-previous {
+  background-color: #888888;
+}
+
+#btn-next {
+  background-color: #888888;
+}
+
+#div-categories-btn {
+  min-height: 20%;
+}
+
+#btn-back {
+  margin-left: 0;
+}
+
+#div-questions {
+  min-height: 33%;
+  border: solid 1px blue;
+}
+
+#div-answears {
+  min-height: 33%;
+}
+
+#div-nav-btns {
+  min-height: 8%;
+}
