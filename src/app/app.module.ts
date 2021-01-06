@@ -1,17 +1,18 @@
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { InterviewQuestionsComponent } from './interview-questions/interview-questions.component';
+import { CategorySelectionComponent } from './category-selection/category-selection.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { RouterModule, Routes } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
-import { RouterModule, Routes } from '@angular/router';
-import { CategorySelectionComponent } from './category-selection/category-selection.component';
-import { InterviewQuestionsComponent } from './interview-questions/interview-questions.component';
+import { AppComponent } from './app.component';
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const appRoutes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -34,7 +35,9 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     AppRoutingModule,
+    
     FontAwesomeModule,
     RouterModule.forRoot(appRoutes)
   ],

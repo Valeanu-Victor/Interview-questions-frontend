@@ -1,4 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { RetrievedQuestions } from '../category-selection/retrievedQuestions';
+import { QuestionsDataService } from '../services/data/questions-data.service';
 
 @Component({
   selector: 'app-interview-questions',
@@ -7,9 +9,17 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 })
 export class InterviewQuestionsComponent implements OnInit {
 
-  constructor(private renderer: Renderer2) { }
+  private retrievedQuestions: Array<RetrievedQuestions>;
+
+  constructor(private renderer: Renderer2,
+    private questionsService: QuestionsDataService) { }
 
   ngOnInit(): void {
+    console.log(this.retrievedQuestions);
+    this.questionsService.currentRetrievedQuestions.subscribe(
+      data => this.retrievedQuestions = data
+    );
+    console.log(this.retrievedQuestions);
   }
 
   toggleEyeIcon(event) {

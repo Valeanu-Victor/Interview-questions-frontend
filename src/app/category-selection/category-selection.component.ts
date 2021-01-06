@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { Category } from './category';
 import { Difficulty } from './difficulty';
 import { DIFFICULTIES, CATEGORIES } from '../constants';
+import { Selections } from './selections';
+import { QuestionsDataService } from '../services/data/questions-data.service';
+import { RetrievedQuestions } from './retrievedQuestions';
 
 @Component({
   selector: 'app-category-selection',
@@ -22,12 +25,11 @@ export class CategorySelectionComponent implements OnInit {
   private DifficultiesEnum = Difficulty;
   private difficulties: Set<string> = new Set();
   private categories: Set<string> = new Set();
-  private selections = {
-    difficulties: this.difficulties,
-    categories: this.categories,
-  };
+  private selections: Selections = new Selections(this.difficulties, this.categories);
+  retrievedQuestions: Array<RetrievedQuestions> = new Array();
 
   constructor(
+    private questionsDataService: QuestionsDataService,
     private renderer: Renderer2,
     private router: Router
   ) { }
@@ -65,14 +67,22 @@ export class CategorySelectionComponent implements OnInit {
       }
     }
 
-    if (this.selections.categories.size == 0 ||
-      this.selections.difficulties.size == 0
+    if (this.selections.getCategories().size == 0 ||
+      this.selections.getDifficulties().size == 0
       ) {
       this.areButtonsSelected = false;
     } else {
-    //send selections to backend in order to receive questions
+    //data has to be converted to ARRAY instead of SET in order to avoid JSON parsing error in the backend
+      this.selections.setDifficulties(Array.from(this.difficulties));
+      this.selections.setCategories(Array.from(this.categories));
 
-    this.router.navigate(['/interview-questions']);
+      this.questionsDataService
+      .retrieveQuestionsByCategoryAndDifficulty(this.selections)
+      .subscribe(data => data.forEach(x => this.retrievedQuestions.push(x)));
+
+      this.questionsDataService.changeRetrievedQuestions(this.retrievedQuestions);
+
+      this.router.navigate(['/interview-questions']);
     }
   }
 

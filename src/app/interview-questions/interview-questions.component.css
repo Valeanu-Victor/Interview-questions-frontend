@@ -1,18 +1,12 @@
-@media only screen and (max-width: 700px) {
-  .btn-nav {
-    max-width: 10%;
-  }
-}
-
 .btn-center {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  height: 100%;
 }
 
-.btn-nav {
-  max-width: none;
-  height: 70%;
+#eye {
+  pointer-events: none;
 }
 
 #btn-previous {
@@ -41,5 +35,5 @@
 }
 
 #div-nav-btns {
-  min-height: 8%;
+  height: 8%;
 }
