@@ -1,21 +1,31 @@
 <app-navbar></app-navbar>
 
-<div id="div-categories-btn" style="border: solid 1px; color: red;">
-  <button id="btn-back" class="btn btn-secondary" routerLink="/categories"><i class="fa fa-arrow-left"></i> Back to categories</button>
+<div class="div-categories" style="border: solid 1px red;">
+  <button id="btn-back" class="btn btn-warning" routerLink="/categories">
+    <i class="fa fa-arrow-left"></i> Back to categories
+  </button>
+
+  <div class="container div-counter" style="border: solid 1px green;">
+    <p class="p-questions text-responsive">{{currQuestionNumber}}/{{totalQuestions}}</p>
+  </div>
 </div>
 
 <div id="div-questions" class="container">
-
+  <p class="p-questions text-responsive-smaller">{{ displayedQuestion }}</p>
 </div>
 
-<div id="div-answears" class="container" style="border: solid 1px; color: red;">
-
+<div id="div-answers" class="container" style="border: solid 1px;">
+  <p class="p-answers text-responsive-smaller" [hidden]="isAnswearHidden">{{ displayedAnswer }}</p>
 </div>
 
 <div id="div-nav-btns" style="border: solid 1px; color: blue;">
   <div class="btn-group btn-center" style="border: solid 1px purple;">
-    <button id="btn-previous" class="btn"><i id="ii" class="fa fa-arrow-left"></i> Previous Question</button>
-    <button class="btn btn-success" (click)="toggleEyeIcon($event)"><i id="eye" class="fa fa-eye"></i></button>
-    <button id="btn-next" class="btn">Next Question <i class="fa fa-arrow-right"></i></button>
+    <button id="btn-previous" class="btn btn-nav" (click)="getPreviousQuestion(displayedQuestion)">
+      <i id="ii" class="fa fa-arrow-left"></i> Previous
+    </button>
+    <button #eyeBtn class="btn btn-success btn-nav" (click)="toggleEyeIcon()">
+      <i id="eye" class="fa fa-eye-slash"></i>
+    </button>
+    <button id="btn-next" class="btn btn-nav" (click)="getNextQuestion(displayedQuestion)">Next <i class="fa fa-arrow-right"></i></button>
   </div>
 </div>

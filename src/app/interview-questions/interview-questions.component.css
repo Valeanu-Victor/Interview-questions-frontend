@@ -5,6 +5,38 @@
   height: 100%;
 }
 
+.btn-nav {
+  max-width: 15%;
+}
+
+.div-categories {
+  min-height: 10%;
+}
+
+.div-counter {
+  display: table;
+}
+
+.p-counter {
+  text-align: center;
+}
+
+.p-questions {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+.p-answers {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
 #eye {
   pointer-events: none;
 }
@@ -17,23 +49,85 @@
   background-color: #888888;
 }
 
-#div-categories-btn {
-  min-height: 20%;
-}
-
 #btn-back {
   margin-left: 0;
 }
 
 #div-questions {
-  min-height: 33%;
+  display: table;
+  table-layout: fixed;
+  min-height: 36%;
   border: solid 1px blue;
+  max-width: 100%;
 }
 
-#div-answears {
-  min-height: 33%;
+#div-answers {
+  display: table;
+  table-layout: fixed;
+  min-height: 43%;
+  max-width: 100%;
 }
 
 #div-nav-btns {
-  height: 8%;
+  height: 5%;
+}
+
+@media only screen and (max-height: 700px) {
+  #div-nav-btns {
+    height: 8%;
+  }
+}
+
+@media only screen and (max-height: 500px) {
+  #div-nav-btns {
+    height: 10%;
+  }
+}
+
+@media only screen and (max-height: 350px) {
+  #div-nav-btns {
+    height: 15%;
+  }
+}
+
+@media only screen and (max-height: 150px) {
+  #div-nav-btns {
+    height: 22%;
+  }
+}
+
+@media only screen and (max-width: 1160px) {
+  .btn-nav {
+    max-width: none;
+  }
+}
+
+/* DOESN'T WORK -> To be fixed @@@@@@@@@@@@@@@@@@*/
+@media only screen and (max-width: 94px) {
+  .btn-nav {
+    max-width: none;
+  }
+  #div-nav-btns {
+    height: 50%;
+  }
+}
+
+@media (min-width: 576px) {
+  .text-responsive { font-size: 1.25rem; }
+  .text-responsive-smaller { font-size: 1rem; }
+}
+
+@media (min-width: 768px) {
+  .text-responsive { font-size: 1.5rem; }
+  .text-responsive-smaller { font-size: 1.25rem; }
+}
+
+@media (min-width: 992px) {
+  .text-responsive { font-size: 1.75rem; }
+  .text-responsive-smaller { font-size: 1.5rem; }
+}
+
+@media (min-width: 1200px) {
+  .text-responsive { font-size: 2rem; }
+  .text-responsive-smaller { font-size: 1.75rem; }
 }

@@ -12,4 +12,12 @@ export class RetrievedQuestions {
     this.difficulty = difficulty;
     this. category = category;
   }
+
+  getQuestion() {
+    return this.question;
+  }
+
+  getAnswer() {
+    return this.answer;
+  }
 }

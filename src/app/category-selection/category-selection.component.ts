@@ -26,7 +26,7 @@ export class CategorySelectionComponent implements OnInit {
   private difficulties: Set<string> = new Set();
   private categories: Set<string> = new Set();
   private selections: Selections = new Selections(this.difficulties, this.categories);
-  retrievedQuestions: Array<RetrievedQuestions> = new Array();
+  private retrievedQuestions: Array<RetrievedQuestions> = new Array();
 
   constructor(
     private questionsDataService: QuestionsDataService,
@@ -78,11 +78,13 @@ export class CategorySelectionComponent implements OnInit {
 
       this.questionsDataService
       .retrieveQuestionsByCategoryAndDifficulty(this.selections)
-      .subscribe(data => data.forEach(x => this.retrievedQuestions.push(x)));
-
-      this.questionsDataService.changeRetrievedQuestions(this.retrievedQuestions);
-
-      this.router.navigate(['/interview-questions']);
+      .subscribe(data => {
+        data.forEach(x => {
+          this.retrievedQuestions.push(x);
+        });
+        this.questionsDataService.changeRetrievedQuestions(this.retrievedQuestions);
+        this.router.navigate(['/interview-questions']);
+      });
     }
   }
 
