@@ -22,6 +22,19 @@
 /*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/
 
+.div-error {
+  position: relative;
+  display: table;
+  width: 100%;
+}
+
+.p-error {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+}
+
 input.ng-invalid.ng-touched {
   border: 1px solid red;
 }

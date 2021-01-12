@@ -20,7 +20,9 @@
         <div class="main">
 
           <div *ngIf="isUserAuthenticated" class="welcome-div">
-            <p class="text-responsive text-welcome">Welcome {{ userEmail }}!</p>
+            <p class="text-responsive text-welcome">Welcome {{ userEmail }}!<br/><br/>
+              The feature which saves the progress is not implemented yet!
+              You can still enjoy all the features of a guest user!</p>
           </div>
 
           <section *ngIf="!isUserAuthenticated" class="signup">
@@ -50,6 +52,8 @@
                               <button class="form-submit">SIGN UP</button>
                           </div>
                           <p *ngIf="!isFormValid" class="alert alert-warning p-warning">Invalid form!</p>
+                          <p *ngIf="isUserAlreadyCreated" class="alert alert-warning p-warning">Email already registered!</p>
+                          <p *ngIf="isUserSuccesfullyCreated" class="alert alert-success p-warning">Account successfully created!</p>
                       </form>
                       <p class="loginhere">
                           Already have an account ? <a routerLink="/login" class="loginhere-link">Login here</a>

@@ -11,11 +11,13 @@ import { SignUpService } from '../services/registration/sign-up.service';
 })
 export class LandingPageComponent implements OnInit {
 
-  isFormValid: boolean = true;
-  isUserAuthenticated: boolean;
   userEmail: string;
+  isUserAuthenticated: boolean;
   isPasswordVisible: boolean = false;
   isRepeatPasswordVisible: boolean = false;
+  isFormValid: boolean = true;
+  isUserAlreadyCreated: boolean = false;
+  isUserSuccesfullyCreated: boolean = false;
 
   constructor(
     private signupService: SignUpService,
@@ -51,16 +53,36 @@ export class LandingPageComponent implements OnInit {
       form.value['password'] === form.value['repeatPassword']) {
       console.log('valid');
       this.signupService.register(form.value['email'], form.value['password']).subscribe(
-        data => {
-          console.log(data);
+        () => {
+          this.displayUserCreatedSuccessfullyMsg();
         },
         error => {
-          console.log(error);
+          if(error['status'] == 409) {
+            this.displayEmailAlreadyExistsMsg();
+          }
         }
       );
     } else {
-      this.isFormValid = false;
+      this.displayInvalidFormMsg();
     }
+  }
+
+  displayEmailAlreadyExistsMsg() {
+    this.isFormValid = true;
+    this.isUserAlreadyCreated = true;
+    this.isUserSuccesfullyCreated = false;
+  }
+
+  displayUserCreatedSuccessfullyMsg() {
+    this.isFormValid = true;
+    this.isUserAlreadyCreated = false;
+    this.isUserSuccesfullyCreated = true;
+  }
+
+  displayInvalidFormMsg() {
+    this.isFormValid = false;;
+    this.isUserAlreadyCreated = false;
+    this.isUserSuccesfullyCreated = false;;
   }
 
 }
