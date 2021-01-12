@@ -32,18 +32,24 @@
                               <input type="text" class="form-input" name="email"
                                 placeholder="Your Email" required email ngModel/>
                           </div>
-                          <div class="form-group">
-                              <input type="password" class="form-input" name="password"
-                                placeholder="Password" required ngModel/>
+                          <div class="form-group password-wrapper">
+                              <input [type]="isPasswordVisible ? 'text' : 'password'" class="form-input"
+                                name="password" placeholder="Password" required ngModel/>
+                                <span class="btn-show-pass eye-span">
+                                  <i class="fa fa-eye-slash password" (click)="toggleEye($event)"></i>
+                                </span>
                           </div>
-                          <div class="form-group">
-                              <input type="password" class="form-input" name="repeatPassword"
-                                placeholder="Repeat your password" required ngModel/>
+                          <div class="form-group password-wrapper">
+                              <input [type]="isRepeatPasswordVisible ? 'text' : 'password'" class="form-input"
+                                name="repeatPassword" placeholder="Repeat your password" required ngModel/>
+                                <span class="btn-show-pass eye-span">
+                                  <i class="fa fa-eye-slash repeatPassword" (click)="toggleEye($event)"></i>
+                                </span>
                           </div>
                           <div class="form-group">
                               <button class="form-submit">SIGN UP</button>
                           </div>
-                          <p *ngIf="wasCreatedSuccessfully">Created successfully!</p>
+                          <p *ngIf="!isFormValid" class="alert alert-warning p-warning">Invalid form!</p>
                       </form>
                       <p class="loginhere">
                           Already have an account ? <a routerLink="/login" class="loginhere-link">Login here</a>

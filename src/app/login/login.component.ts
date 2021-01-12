@@ -11,6 +11,7 @@ import { JwtAuthService } from '../services/authentication/jwt-auth.service';
 export class LoginComponent implements OnInit {
 
   isPasswordVisible: boolean = false;
+  isErrorMsgVisible: boolean;
 
   constructor(
     private renderer: Renderer2,
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.isErrorMsgVisible = false;
   }
 
   toggleEyeIcon(event) {
@@ -39,8 +41,12 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data);
+          this.router.navigate(['/']);
         },
-        error => console.log(error)
+        error => {
+          console.log(error);
+          this.isErrorMsgVisible = true;
+        }
       );
   }
 

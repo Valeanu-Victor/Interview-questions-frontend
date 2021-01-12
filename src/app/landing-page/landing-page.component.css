@@ -26,6 +26,10 @@ a {
   text-decoration: none;
 }
 
+.p-warning {
+  text-align: center;
+}
+
 .welcome-div {
   display: table;
   table-layout: fixed;
@@ -513,6 +517,49 @@ input[type="checkbox"]:not(old):checked + label > span:before {
   .signup-content {
     padding: 50px 25px;
   }
+}
+
+.btn-show-pass {
+  font-size: 15px;
+  color: #999999;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 12px;
+  padding: 0 5px;
+  cursor: pointer;
+  -webkit-transition: background 0.4s;
+  -o-transition: background 0.4s;
+  -moz-transition: background 0.4s;
+  transition: background 0.4s;
+}
+
+.btn-show-pass:hover {
+  color: #57b846;
+}
+
+.btn-show-pass.active {
+  color: #57b846;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.eye-span {
+  position: absolute;
+  float: right;
+}
+
+.password .repeatPassword {
+  /* it is used in the component's typescript logic for showing/hidding the password */
 }
 
 /*# sourceMappingURL=style.css.map */
