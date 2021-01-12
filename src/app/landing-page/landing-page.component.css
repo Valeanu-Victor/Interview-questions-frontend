@@ -26,6 +26,21 @@ a {
   text-decoration: none;
 }
 
+.welcome-div {
+  display: table;
+  table-layout: fixed;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.text-welcome {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  max-width: 100%;
+}
+
 .btn-round {
   border-radius: 30px;
 }

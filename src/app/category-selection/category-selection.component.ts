@@ -72,7 +72,7 @@ export class CategorySelectionComponent implements OnInit {
       ) {
       this.areButtonsSelected = false;
     } else {
-    //data has to be converted to ARRAY instead of SET in order to avoid JSON parsing error in the backend
+      //data has to be converted to ARRAY instead of SET in order to avoid JSON parsing error in the backend
       this.selections.setDifficulties(Array.from(this.difficulties));
       this.selections.setCategories(Array.from(this.categories));
 

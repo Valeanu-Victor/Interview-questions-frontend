@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AUTHENTICATED_USER } from '../constants';
+import { JwtAuthService } from '../services/authentication/jwt-auth.service';
+import { SignUpService } from '../services/registration/sign-up.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -8,13 +11,28 @@ import { NgForm } from '@angular/forms';
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor() { }
+  wasCreatedSuccessfully: boolean = false;
+  isUserAuthenticated: boolean;
+  userEmail: string;
+
+  constructor(
+    private signupService: SignUpService,
+    private jwtAuth: JwtAuthService
+  ) { }
 
   ngOnInit(): void {
+    if(this.jwtAuth.isUserLoggedIn()) {
+      this.isUserAuthenticated = true;
+      this.userEmail = sessionStorage.getItem(AUTHENTICATED_USER);
+    }
   }
 
   onSignUp(form: NgForm) {
-    console.log(form);
+    console.log('form');
+    if(form.valid) {
+      console.log('valid');
+      this.signupService.register(form.value['email'], form.value['password']).subscribe();
+    }
   }
 
 }

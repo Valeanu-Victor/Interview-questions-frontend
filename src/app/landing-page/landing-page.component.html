@@ -19,7 +19,11 @@
       <div class="text-white d-md-flex align-items-center h-md-100 p-5 justify-content-center">
         <div class="main">
 
-          <section class="signup">
+          <div *ngIf="isUserAuthenticated" class="welcome-div">
+            <p class="text-responsive text-welcome">Welcome {{ userEmail }}!</p>
+          </div>
+
+          <section *ngIf="!isUserAuthenticated" class="signup">
               <div class="container" style="padding-left: 13%;">
                   <div class="signup-content">
                       <form #signUpForm="ngForm" id="signup-form" class="signup-form" (ngSubmit)="onSignUp(signUpForm)">
@@ -39,6 +43,7 @@
                           <div class="form-group">
                               <button class="form-submit">SIGN UP</button>
                           </div>
+                          <p *ngIf="wasCreatedSuccessfully">Created successfully!</p>
                       </form>
                       <p class="loginhere">
                           Already have an account ? <a routerLink="/login" class="loginhere-link">Login here</a>

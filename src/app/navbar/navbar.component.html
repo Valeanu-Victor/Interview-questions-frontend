@@ -9,10 +9,16 @@
   <div class="collapse navbar-collapse" id="navbar-list-5">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
+        <a style="float: left;" class="nav-link" routerLink="" routerLinkActive="active">Home</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" routerLink="/manage-questions" routerLinkActive="active">Manage Questions</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+        <a *ngIf="!isUserAuthenticated" class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+      </li>
+      <li *ngIf="isUserAuthenticated" class="nav-item">
+        <a class="nav-link" routerLink="/login" routerLinkActive="active" (click)="logout()">Logout</a>
       </li>
     </ul>
   </div>

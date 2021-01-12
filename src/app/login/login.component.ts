@@ -1,6 +1,7 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { JwtAuthService } from '../services/authentication/jwt-auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private renderer: Renderer2,
-    private router: Router
+    private router: Router,
+    private authService: JwtAuthService
     ) { }
 
   ngOnInit(): void {
@@ -31,7 +33,15 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(form: NgForm) {
-    console.log(form);
+    console.log(form.value['email']);
+    console.log(form.value['password']);
+    this.authService.executeJwtAuth(form.value['email'], form.value['password'])
+      .subscribe(
+        data => {
+          console.log(data);
+        },
+        error => console.log(error)
+      );
   }
 
 }
