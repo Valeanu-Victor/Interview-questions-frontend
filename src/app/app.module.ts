@@ -12,15 +12,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { AppComponent } from './app.component';
-
+import { ManageQuestionsComponent } from './manage-questions/manage-questions.component';
+import { ProposeQuestionsComponent } from './propose-questions/propose-questions.component';
 
 const appRoutes: Routes = [
   { path: '', component: LandingPageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'categories', component: CategorySelectionComponent },
   { path: 'interview-questions', component: InterviewQuestionsComponent },
+  { path: 'propose-questions', component: ProposeQuestionsComponent },
 
-  { path: '**', component: LandingPageComponent}
+  { path: '**', component: LandingPageComponent },
 ];
 
 @NgModule({
@@ -30,18 +32,20 @@ const appRoutes: Routes = [
     NavbarComponent,
     LoginComponent,
     CategorySelectionComponent,
-    InterviewQuestionsComponent
+    InterviewQuestionsComponent,
+    ManageQuestionsComponent,
+    ProposeQuestionsComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    
+
     FontAwesomeModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

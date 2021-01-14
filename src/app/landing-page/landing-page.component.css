@@ -3,12 +3,17 @@
     height: 100vh;
   }
 }
+@media (max-width: 768px) {
+  .h-md-100{
+    height: 100vh;
+  }
+}
 
 @media (min-width: 576px) {
-  .text-responsive { font-size: 1.25rem; }
+  .text-responsive { font-size: 1.75rem; }
 }
 @media (min-width: 768px) {
-  .text-responsive { font-size: 1.5rem; }
+  .text-responsive { font-size: 1.75rem; }
 }
 @media (min-width: 992px) {
   .text-responsive { font-size: 1.75rem; }
@@ -43,16 +48,18 @@ a {
   vertical-align: middle;
   text-align: center;
   max-width: 100%;
-  color: white;
   white-space: pre-wrap;
+  color: white;
+  text-shadow: 0.08em 0 black, 0 0.02em black;
 }
 
 .btn-round {
   border-radius: 30px;
 }
 
-.text-white {
+.text-shadow {
   color: white;
+  text-shadow: 0.07em 0 black, 0 0.02em black;
 }
 
 .div-top {
@@ -73,12 +80,12 @@ a {
   background-color: #008000;
 }
 
-.bg-image {
+.bg-image-div {
   /* background-image: url("../../assets/img/bg-landing.jpg");
   max-width: 100%;
   max-height: 100%;
   height: auto; */
-  background: url("../../assets/img/bg-landing.jpg") no-repeat center center fixed;
+  background: url("../../assets/img/bg-moon.png") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

@@ -1,11 +1,10 @@
 <app-navbar></app-navbar>
-
-<div class="d-md-flex h-md-100 align-items-center bg-image">
+<div class="d-md-flex h-md-100 align-items-center bg-image-div">
 
   <!-- First Half -->
   <!-- col-md-6 p-0 h-md-100 d-md-flex align-items-center h-100 p-5 text-center justify-content-center -->
   <div class="allign-items-center justify-content-center text-center col-md-6 p-0">
-    <div class="text-white text-responsive div-top">
+    <div class="text-shadow text-responsive div-top">
       Your progress will be registered only for the current seesion!
     </div>
     <div class="div-bottom">
@@ -20,8 +19,9 @@
         <div class="main">
 
           <div *ngIf="isUserAuthenticated" class="welcome-div">
-            <p class="text-responsive text-welcome">Welcome {{ userEmail }}!<br/><br/>
-              The feature which saves the progress is not implemented yet!
+            <p class="text-responsive text-welcome">Welcome <span style="color: green;">{{ userEmail }}</span>!
+              <br/><br/>
+              The feature which saves the progress is not implemented at the moment!
               You can still enjoy all the features of a guest user!</p>
           </div>
 
@@ -66,4 +66,4 @@
       </div>
   </div>
 
-  </div>
+</div>

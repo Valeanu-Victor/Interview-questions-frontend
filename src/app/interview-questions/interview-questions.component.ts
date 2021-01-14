@@ -19,9 +19,8 @@ export class InterviewQuestionsComponent implements OnInit {
   private retrievedQuestions: Array<RetrievedQuestions>;
   private noQuestionsMsg: string =
     'Sorry, no questions match the selected combination of categories and difficulties!';
-  private congratsQuestionMsg: string =
-    'Congrats, you finished all the questions!';
   private noAnswersMsg: string = '-';
+  congratsQuestionMsg: string = 'Well done, you finished all the questions!';
   totalQuestions: number = 0;
   currQuestionNumber: number = 0;
   isAnswearHidden: boolean = true;
@@ -34,6 +33,7 @@ export class InterviewQuestionsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    window.scrollTo(0, document.body.scrollHeight);
     this.retrievedQuestions = this.questionsService.getCurrentQuestions();
     if (
       this.retrievedQuestions == null ||

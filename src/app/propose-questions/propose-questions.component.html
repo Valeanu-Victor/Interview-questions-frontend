@@ -1,0 +1,74 @@
+<div class="main">
+  <div class="div-navbar">
+    <app-navbar></app-navbar>
+  </div>
+
+  <div class="div-selections">
+    <p class="p-qa text-responsive">Please select the proposed category and difficulty:</p>
+
+    <div class="div-dropdowns">
+      <div class="dropdown-difficulty">
+        <button #difficulty
+          type="button"
+          class="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Difficulty
+        </button>
+        <div class="dropdown-menu">
+          <a *ngFor="let difficulty of difficulties" class="dropdown-item"
+          (click)="changeDropdownValueDifficulty(difficulty)">{{ difficulty }}</a>
+        </div>
+      </div>
+
+      <div class="dropdown-category">
+        <button #category
+          type="button"
+          class="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Category
+        </button>
+        <div class="dropdown-menu">
+          <a *ngFor="let category of categories" class="dropdown-item"
+          (click)="changeDropdownValueCategory(category)">{{ category }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="div-questions">
+    <p class="p-qa p-qa-font-size">Question:</p>
+    <textarea
+      placeholder="Your question here..."
+      class="text-qa text-q"
+      [(ngModel)]="questionText"
+    ></textarea>
+  </div>
+
+  <div class="div-answers">
+    <p class="p-qa p-qa-font-size">Answer:</p>
+    <textarea
+      placeholder="Your question here..."
+      class="text-qa text-a"
+      [(ngModel)]="answerText"
+    ></textarea>
+  </div>
+
+  <div class="div-submit">
+    <div class="wrapper-submit">
+      <button class="btn btn-success" (click)="onSubmit()">SUBMIT</button>
+    </div>
+  </div>
+
+  <div *ngIf="isSuccessMsgShown || isErrorMsgShown" class="div-msg">
+    <div class="wrapper-msg">
+      <p *ngIf="isSuccessMsgShown" class="alert alert-success p-msg">{{ successMsg }}</p>
+      <p *ngIf="isErrorMsgShown" class="alert alert-danger p-msg">{{ errorMsg }}</p>
+    </div>
+  </div>
+</div>
