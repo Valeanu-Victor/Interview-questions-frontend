@@ -1,6 +1,6 @@
 {
   "name": "hotinterviewquestions",
-  "version": "0.0.0",
+  "version": "12.18.4",
   "scripts": {
     "ng": "ng",
     "heroku-postbuild": "ng build --prod && npm install -g http-server-spa",
