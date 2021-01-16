@@ -29,5 +29,11 @@
 </div>
 
 <div>
-  <p *ngIf="!areButtonsSelected" id="error-msg" class="d-flex justify-content-center">Please select at least one difficulty and at least one category</p>
+  <p *ngIf="!areButtonsSelected" id="error-msg" class="d-flex justify-content-center msg-bottom">Please select at least one difficulty and at least one category</p>
+</div>
+<div>
+  <p *ngIf="isLoading && areButtonsSelected" class="d-flex justify-content-center alert alert-warning msg-bottom">Loading...</p>
+</div>
+<div>
+  <p *ngIf="isErrorMsgShown" class="d-flex justify-content-center alert alert-danger msg-bottom">Something went wrong! Please try again later!</p>
 </div>

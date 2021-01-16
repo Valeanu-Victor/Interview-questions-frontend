@@ -21,6 +21,8 @@ export class CategorySelectionComponent implements OnInit {
   @ViewChild('difficulties', { static: false }) private difficultiesDiv: ElementRef;
   @ViewChild('categories', { static: false }) private categoriesDiv: ElementRef;
   areButtonsSelected: boolean = true;
+  isLoading: boolean = false;
+  isErrorMsgShown: boolean = false;
   private CategoriesEnum = Category;
   private DifficultiesEnum = Difficulty;
   private difficulties: Set<string> = new Set();
@@ -48,6 +50,9 @@ export class CategorySelectionComponent implements OnInit {
   }
 
   onStart() {
+    this.isErrorMsgShown = false;
+    this.isLoading = true;
+
     //matches every character EXCEPT a-z, A-z, 0-9
     let matcher = /([^a-zA-z0-9]+)/g;
 
@@ -73,6 +78,7 @@ export class CategorySelectionComponent implements OnInit {
       this.areButtonsSelected = false;
     } else {
       //data has to be converted to ARRAY instead of SET in order to avoid JSON parsing error in the backend
+      this.areButtonsSelected = true;
       this.selections.setDifficulties(Array.from(this.difficulties));
       this.selections.setCategories(Array.from(this.categories));
 
@@ -84,6 +90,14 @@ export class CategorySelectionComponent implements OnInit {
         });
         this.questionsDataService.changeRetrievedQuestions(this.retrievedQuestions);
         this.router.navigate(['/interview-questions']);
+      },
+      error => {
+        this.isErrorMsgShown = true;
+        this.isLoading = false;
+        this.categories.clear();
+        this.difficulties.clear();
+        this.selections.setCategories(this.categories);
+        this.selections.setDifficulties(this.difficulties);
       });
     }
   }
