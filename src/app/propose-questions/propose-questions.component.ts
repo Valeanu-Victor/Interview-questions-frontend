@@ -73,7 +73,7 @@ export class ProposeQuestionsComponent implements OnInit {
       this.isErrorMsgShown = false;
       setTimeout(() => this.isSuccessMsgShown = false, 4000);
       this.questionsDataService.sendProposedQuestion(proposedQuestion).subscribe(
-        response => {},
+        () => {},
         error => console.log(error)
         );
     } else {

@@ -51,7 +51,6 @@ export class LandingPageComponent implements OnInit {
   onSignUp(form: NgForm) {
     if(form.valid &&
       form.value['password'] === form.value['repeatPassword']) {
-      console.log('valid');
       this.signupService.register(form.value['email'], form.value['password']).subscribe(
         () => {
           this.displayUserCreatedSuccessfullyMsg();

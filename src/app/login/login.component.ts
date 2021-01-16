@@ -6,10 +6,9 @@ import { JwtAuthService } from '../services/authentication/jwt-auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-
   isPasswordVisible: boolean = false;
   isErrorMsgVisible: boolean;
 
@@ -17,7 +16,7 @@ export class LoginComponent implements OnInit {
     private renderer: Renderer2,
     private router: Router,
     private authService: JwtAuthService
-    ) { }
+  ) {}
 
   ngOnInit(): void {
     this.isErrorMsgVisible = false;
@@ -35,19 +34,14 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(form: NgForm) {
-    console.log(form.value['email']);
-    console.log(form.value['password']);
-    this.authService.executeJwtAuth(form.value['email'], form.value['password'])
+    this.authService
+      .executeJwtAuth(form.value['email'], form.value['password'])
       .subscribe(
-        data => {
-          console.log(data);
-          this.router.navigate(['/']);
-        },
-        error => {
+        () => this.router.navigate(['/']),
+        (error) => {
           console.log(error);
           this.isErrorMsgVisible = true;
         }
       );
   }
-
 }
