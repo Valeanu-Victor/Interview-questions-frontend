@@ -30,9 +30,11 @@
 .p-questions {
   display: table-cell;
   vertical-align: middle;
-  text-align: center;
   max-width: 100%;
   word-wrap: break-word;
+  text-align: justify;
+  text-justify: inter-word;
+  text-align-last: center;
 }
 
 .text-green {
@@ -46,6 +48,8 @@
   word-wrap: break-word;
   text-align: justify;
   text-justify: inter-word;
+  text-align-last: center;
+  white-space: pre-wrap;
 }
 
 #eye {
