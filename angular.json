@@ -121,5 +121,8 @@
         }
       }
     }},
-  "defaultProject": "hotinterviewquestions"
+  "defaultProject": "hotinterviewquestions",
+  "cli": {
+    "analytics": false
+  }
 }
